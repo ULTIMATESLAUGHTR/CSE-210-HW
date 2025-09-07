@@ -19,13 +19,13 @@ class NumberListAnalyzer
         
         Console.WriteLine("Enter only whole numbers (type 'done' to finish):");
         
-        // Get numbers from user
+        // Gets numbers from the user
         while (true)
         {
             Console.Write("Enter a number: ");
             input = Console.ReadLine();
             
-            // Check if user wants to stop
+            // Check if the user wants to stop
             if (input.ToLower() == "done")
             {
                 break;
@@ -43,19 +43,19 @@ class NumberListAnalyzer
             }
         }
         
-        // Check if any numbers were entered
+        // Checks if any numbers were entered
         if (numbers.Count == 0)
         {
             Console.WriteLine("No numbers were entered, or you can't add zero or negative numbers.");
             return;
         }
-        
-        // Calculate and display results
+
+        // Calculates and displays results
         double sum = numbers.Sum();
         double average = numbers.Average();
         double maximum = numbers.Max();
-        
-        Console.WriteLine("\n--- Results ---");
+
+        Console.WriteLine("\n--- Your Results Are... ---");
         Console.WriteLine($"Numbers entered: {numbers.Count}");
         Console.WriteLine($"Numbers: [{string.Join(", ", numbers)}]");
         Console.WriteLine($"Sum: {sum}");
