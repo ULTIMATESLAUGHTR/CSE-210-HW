@@ -20,7 +20,7 @@ class Program
                     string[] parts = line.Split('|');
                     if (parts.Length == 3)
                     {
-                        var entry = new JournalEntry
+                        var entry = new JournalEntry(false)
                         {
                             Date = parts[0].Trim(),
                             Prompt = parts[1].Trim(),
@@ -75,12 +75,13 @@ class Program
             {
                 case "1":
                     Console.WriteLine("You chose to write a journal entry.");
-                    JournalEntry entry = new JournalEntry();
-                    _entries.Add(entry);
-
                     Console.WriteLine("Would you like to get a writing prompt? (yes/no)");
                     string promptAnswer = Console.ReadLine().ToLower();
-                    if (promptAnswer == "yes")
+                    bool usePrompt = promptAnswer == "yes";
+                    JournalEntry entry = new JournalEntry(usePrompt);
+                    _entries.Add(entry);
+
+                    if (usePrompt)
                     {
                         PromptGenerator promptGen = new PromptGenerator();
                         string prompt = promptGen.GetRandomPrompt();
@@ -98,7 +99,7 @@ class Program
                     Console.WriteLine("Would you like to write another entry? (yes/no)");
                     if (Console.ReadLine().ToLower() == "yes")
                     {
-                        JournalEntry secondEntry = new JournalEntry();
+                        JournalEntry secondEntry = new JournalEntry(usePrompt);
                         _entries.Add(secondEntry);
                         Console.WriteLine("another journal entry has been created.");
                     }

@@ -4,11 +4,18 @@ public class JournalEntry
     public string Prompt { get; set; }
     public string Response { get; set; }
 
-    public JournalEntry()
+    public JournalEntry(bool usePrompt)
     {
         Date = DateTime.Now.ToShortDateString();
-        Prompt = GetRandomPrompt();
-        Console.WriteLine($"Prompt: {Prompt}");
+        if (usePrompt)
+        {
+            Prompt = GetRandomPrompt();
+            Console.WriteLine($"Prompt: {Prompt}");
+        }
+        else
+        {
+            Prompt = "No prompt used.";
+        }
         Console.Write("Your response: ");
         Response = Console.ReadLine();
     }
