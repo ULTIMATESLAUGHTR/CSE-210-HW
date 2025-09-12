@@ -18,7 +18,7 @@ public class JournalEntry
         Console.WriteLine($"Date: {Date}");
         Console.WriteLine($"Prompt: {Prompt}");
         Console.WriteLine($"Response: {Response}");
-        Console.WriteLine(); // Empty line for spacing
+        Console.WriteLine(); // Empty line for spacing so it's easier to read for multiple entries later.
     }
 
     private string GetRandomPrompt()

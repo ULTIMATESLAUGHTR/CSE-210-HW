@@ -77,6 +77,23 @@ class Program
                     Console.WriteLine("You chose to write a journal entry.");
                     JournalEntry entry = new JournalEntry();
                     _entries.Add(entry);
+
+                    Console.WriteLine("Would you like to get a writing prompt? (yes/no)");
+                    string promptAnswer = Console.ReadLine().ToLower();
+                    if (promptAnswer == "yes")
+                    {
+                        PromptGenerator promptGen = new PromptGenerator();
+                        string prompt = promptGen.GetRandomPrompt();
+                        Console.WriteLine($"Here is your prompt: {prompt}");
+                    }
+                    else if (promptAnswer == "no")
+                    {
+                        Console.WriteLine("No prompt will be provided. You can write freely.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please enter 'yes' or 'no' only.");
+                    }
                     
                     Console.WriteLine("Would you like to write another entry? (yes/no)");
                     if (Console.ReadLine().ToLower() == "yes")
