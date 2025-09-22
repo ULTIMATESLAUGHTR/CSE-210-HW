@@ -16,31 +16,33 @@ class Program
         {
             return;
         }
-        else
+
+        // This will hide the scripture for each iteration.
+
+        var hider = new ScriptureHider(randomScripture.Text);
+
+        while (!hider.AllWordsHidden)
         {
+            Console.Clear();
+            
+            // Hide words on the SAME hider instance
+            hider.HideRandomWords(3);
+            Console.WriteLine($"{randomScripture.Reference}: {hider.GetHiddenText()}");
 
-            while (true)
+            Console.WriteLine("\nPress Enter to hide more words or type 'quit' to quit.");
+            if (Console.ReadLine().ToLower() == "quit")
             {
-                Console.Clear();
-                var hider = new ScriptureHider(randomScripture.Text);
-                hider.HideRandomWords(2);
-                Console.WriteLine($"{randomScripture.Reference}: {hider.GetHiddenText()}");
-
-                if (hider.GetHiddenText().Contains("_"))
-                {
-                    Console.WriteLine("\nPress Enter to hide more words or type 'quit' to quit.");
-                    if (Console.ReadLine().ToLower() == "quit")
-                    {
-                        break;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("\nAll words are hidden! Press Enter one more time to exit the program and get a new scripture to memorize.");
-                    Console.ReadLine();
-                    break;
-                }
+                break;
+            }
         }
+
+        if (hider.AllWordsHidden)
+        {
+            Console.Clear();
+            Console.WriteLine($"{randomScripture.Reference}: {hider.GetHiddenText()}");
+            Console.WriteLine("\nAll the scripture's words are hidden! You've completed the memorization exercise. When you're ready...");
+            Console.WriteLine("Press the Enter key to exit.");
+            Console.ReadLine();
         }
     }
 }
