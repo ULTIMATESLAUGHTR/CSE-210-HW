@@ -48,7 +48,7 @@ class Program
             {
                 Main(); // Restarts the process for a new scripture memorization program.
             }
-            else
+            else if (Console.ReadLine().ToLower() == "quit")
             {
                 return;
             }
