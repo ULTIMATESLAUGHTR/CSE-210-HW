@@ -24,8 +24,8 @@ class Program
         while (!hider.AllWordsHidden)
         {
             Console.Clear();
-            
-            // Hide words on the SAME hider instance
+
+            // This hides words on the SAME hider instance
             hider.HideRandomWords(3);
             Console.WriteLine($"{randomScripture.Reference}: {hider.GetHiddenText()}");
 
@@ -41,8 +41,17 @@ class Program
             Console.Clear();
             Console.WriteLine($"{randomScripture.Reference}: {hider.GetHiddenText()}");
             Console.WriteLine("\nAll the scripture's words are hidden! You've completed the memorization exercise. When you're ready...");
-            Console.WriteLine("Press the Enter key to exit.");
+            Console.WriteLine("Press the Enter key to exit, or type again for a new scripture.");
             Console.ReadLine();
+
+            if (Console.ReadLine().ToLower() == "again")
+            {
+                Main(); // Restarts the process for a new scripture memorization program.
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
