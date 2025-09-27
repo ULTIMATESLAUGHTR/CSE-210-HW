@@ -12,7 +12,7 @@ class Program
         DisplayAllVideos(videoLibrary);
         
         // Demonstrate adding a new comment
-        Console.WriteLine("\n--- Adding a new comment ---");
+        Console.WriteLine("\n---New Comments Added ---");
         Comment.AddComment("Sample YoutubeVideo", "NewUser", "Just watched this, amazing!");
         
         Console.WriteLine("Updated comments for 'Sample YoutubeVideo':");

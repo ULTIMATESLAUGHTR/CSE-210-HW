@@ -42,7 +42,8 @@ public class Comment
         var anotherVideoComments = new List<Comment>
         {
             new Comment("Fan123", "Amazing work!", "Another YoutubeVideo"),
-            new Comment("Viewer99", "Keep it up!", "Another YoutubeVideo")
+            new Comment("Viewer99", "Keep it up!", "Another YoutubeVideo"),
+            new Comment("CriticX", "Could be better", "Another YoutubeVideo")
         };
 
         
@@ -57,10 +58,11 @@ public class Comment
         var fourthVideoComments = new List<Comment>
         {
             new Comment("TechReviewer", "Outstanding quality", "Fourth YoutubeVideo"),
-            new Comment("ContentLover", "Subscribed!", "Fourth YoutubeVideo")
+            new Comment("ContentLover", "Subscribed!", "Fourth YoutubeVideo"),
+            new Comment("Viewer42", "Nice editing", "Fourth YoutubeVideo")
         };
 
-        // Add to the main repository
+        // This adds each video's comments to the main collection
         _allVideoComments["Sample YoutubeVideo"] = sampleVideoComments;
         _allVideoComments["Another YoutubeVideo"] = anotherVideoComments;
         _allVideoComments["Third YoutubeVideo"] = thirdVideoComments;

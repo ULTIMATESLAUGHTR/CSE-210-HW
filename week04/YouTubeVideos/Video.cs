@@ -7,7 +7,7 @@ public class Video
     private string _author;
     private int _lengthInSeconds;
 
-    // Public properties with proper encapsulation
+    
     public string Title 
     { 
         get { return _title; } 
@@ -38,7 +38,7 @@ public class Video
         Console.WriteLine($"Title: {Title}, Author: {Author}, Length: {LengthInSeconds} seconds");
     }
     
-    // Get comments for this video from the Comment class repository
+    // Gets the comments for this video from the Comment class
     public List<Comment> GetComments()
     {
         return Comment.GetCommentsForVideo(Title);
@@ -46,7 +46,7 @@ public class Video
     
     public void DisplayComments()
     {
-        Console.WriteLine($"Comments for {Title}:");
+        Console.WriteLine($"Total Comments for {Title}:");
         var comments = GetComments();
         foreach (var comment in comments)
         {
