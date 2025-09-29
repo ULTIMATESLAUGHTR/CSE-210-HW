@@ -11,7 +11,7 @@ class Program
         VideoLibrary videoLibrary = new VideoLibrary();
         DisplayAllVideos(videoLibrary);
         
-        // Demonstrate adding a new comment
+        // Demonstrates adding a new comment
         Console.WriteLine("\n---New Comments Added ---");
         Comment.AddComment("Sample YoutubeVideo", "NewUser", "Just watched this, amazing!");
         
@@ -36,7 +36,7 @@ class Program
         Console.WriteLine("\nComments for each Video:");
         Console.WriteLine("------------------------");
         
-        // Get all videos and their comments from the Comment class repository
+        // Gets all videos and their comments from the Comment class repository
         foreach (var video in videoLibrary.GetAllVideos())
         {
             Console.WriteLine($"\nComments for '{video.Title}':");
