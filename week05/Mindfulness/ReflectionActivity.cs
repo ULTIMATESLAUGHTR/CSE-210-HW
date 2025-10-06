@@ -3,6 +3,8 @@ using System;
 class Reflection : Activity
 
 {
+    private Random rand = new Random();
+
     private string[] prompts = {
         "Think of a time when you stood up for someone else.",
         "Think of a time when you did something really difficult.",
@@ -36,8 +38,12 @@ class Reflection : Activity
         Console.WriteLine("Get ready to begin your reflection exercise...");
         ShowSpinner(3);
 
-        Random rand = new Random();
-        string prompt = prompts[rand.Next(prompts.Length)];
+        // Shuffles the prompts and questions arrays to ensure randomness.
+        string[] shuffledPrompts = ShuffleArray(prompts);
+        string[] shuffledQuestions = ShuffleArray(questions);
+
+        // Shows only one prompt per session.
+        string prompt = shuffledPrompts[0];
         Console.WriteLine($"Prompt: {prompt}");
         Console.WriteLine("When you have finished reading the prompt, press Enter to continue.");
         Console.ReadLine();
@@ -47,15 +53,29 @@ class Reflection : Activity
         ShowCountdown(7);
 
         DateTime endTime = DateTime.Now.AddSeconds(duration);
-        
+
         while (DateTime.Now < endTime)
         {
-            string question = questions[rand.Next(questions.Length)];
+            string question = shuffledQuestions[rand.Next(shuffledQuestions.Length)];
             Console.WriteLine(question);
             ShowSpinner(10);
             Console.WriteLine();
         }
 
         End();
+    }
+    // Fisher-Yates shuffle I saw this is how to shuffle the arrays so it doesn't repeat.
+    private string[] ShuffleArray(string[] array)
+    {
+        string[] shuffled = (string[])array.Clone();
+        Random rand = new Random();
+        for (int i = shuffled.Length - 1; i > 0; i--)
+        {
+            int j = rand.Next(i + 1);
+            string temp = shuffled[i];
+            shuffled[i] = shuffled[j];
+            shuffled[j] = temp;
+        }
+        return shuffled;
     }
 }
