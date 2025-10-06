@@ -1,6 +1,6 @@
 using System;
 
-class Activity
+public class Activity
 {
     protected string activityName;
     protected string description;

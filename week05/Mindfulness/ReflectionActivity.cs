@@ -1,6 +1,6 @@
 using System;
 
-class Reflection : Activity
+public class ReflectionActivity : Activity
 
 {
     private Random rand = new Random();
@@ -26,7 +26,7 @@ class Reflection : Activity
         "How can you keep this experience in mind in the future?"
     };
 
-    public Reflection()
+    public ReflectionActivity()
     {
         activityName = "Reflection Activity";
         description = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
