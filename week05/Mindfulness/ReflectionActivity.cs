@@ -1,5 +1,5 @@
 using System;
-
+//Added Random Prompt Protections for prompts & Questions variables. See lines - 41-49.
 public class ReflectionActivity : Activity
 
 {
