@@ -1,11 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
+using System.Reflection;
 
 class EarningPoints : GoalTracker
 {
     private int _points;
     private int _level;
+
+    private string _currentTitle;
 
     private List<string> _titles;
     private const string SaveFilePath = "game_save.txt";
@@ -16,23 +20,27 @@ class EarningPoints : GoalTracker
         _titles = new List<string>();
 
     }
-
     public void StartNewGame()
     {
         Console.WriteLine("Starting fresh... No Stats at the Moment... Let's Change That!");
-        // Additional logic for starting a new game can be added here
+    
     }
 
     public void LoadSavedGame()
     {
         Console.WriteLine("Loading saved stats...");
-        // Additional logic for loading a saved game can be added here
+        
     }
 
-    public void ViewCurrentScores()
+    public void ViewCurrentStatus()
     {
         Console.WriteLine($"Your Current Points Total is - {Points}");
         Console.WriteLine($"Your Current Level is - {Level}");
+        Console.WriteLine("Your Titles Earned So Far:");
+        foreach (var title in Titles)
+        {
+            Console.WriteLine($" - {title}");
+        }
     }
 
     public void SaveGame()

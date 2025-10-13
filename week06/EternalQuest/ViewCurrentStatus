@@ -1,0 +1,12 @@
+using System;
+
+class ViewCurrentStatus : GoalTracker
+{
+    public ViewCurrentStatus(string playerName) : base(playerName)
+    {
+        Console.WriteLine("Viewing your current status...");
+        DisplayStatus();
+        Console.WriteLine("Keep up the great work on your goals!");
+        LoadTitles();
+    }
+}

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-abstract class GoalTracker
+public abstract class GoalTracker
 {
     public string PlayerName { get; set; }
     public int Points { get; set; }
@@ -28,24 +28,40 @@ abstract class GoalTracker
     private void CheckLevelUp()
     {
         int requiredPointsForNextLevel = Level * 100; // Example leveling system
-        if (Points >= requiredPointsForNextLevel)
+        while (Points >= requiredPointsForNextLevel)
         {
             Level++;
-            Titles.Add($"Level {Level} Achiever");
+            string title = GetTitleForLevel(Level);
+            Titles.Add(title);
             Console.WriteLine($"Congratulations {PlayerName}, you've leveled up to Level {Level}!");
             SaveTitles();
+            requiredPointsForNextLevel = Level * 100;
+        }
+    }
+
+    public string GetTitleForLevel(int level)
+    {
+        switch (level)
+        {
+            case 1: return "GoalNoob";
+            case 2: return "GreenHorn";
+            case 3: return "Junior Goal Setter";
+            case 4: return "Senior Goal Setter";
+            case 5: return "Veteran";
+            case 6: return "Pro Goal Setter";
+            default: return $"Level {level} Achiever";
         }
     }
 
     public void SetPersonalGoal(string goal)
     {
         PersonalGoals.Add(goal);
-        AddPoints(10); // Reward for setting a personal goal
+        AddPoints(10);
         Console.WriteLine($"Personal goal '{goal}' added! You've earned 10 points.");
         SaveTitles();
     }
-    private string TitlesFilePath => $"{PlayerName}_titles.txt";
-    private void SaveTitles()
+    private string TitlesFilePath => "titles.txt";
+    public void SaveTitles()
     {
         try
         {
@@ -58,7 +74,7 @@ abstract class GoalTracker
     }
     public void LoadTitles()
     {
-        string path = GetTitlesFilePath(), Titles);
+        string path = TitlesFilePath;
         if (File.Exists(path))
         {
             try
