@@ -27,7 +27,7 @@ public abstract class GoalTracker
 
     private void CheckLevelUp()
     {
-        int requiredPointsForNextLevel = Level * 100; // Example leveling system
+        int requiredPointsForNextLevel = Level * 100;
         while (Points >= requiredPointsForNextLevel)
         {
             Level++;
@@ -87,6 +87,44 @@ public abstract class GoalTracker
             }
         }
     }
+
+    public void SavePlayerData()
+    {
+        using (StreamWriter writer = new StreamWriter("game_save.txt"))
+        {
+            writer.WriteLine(PlayerName);
+            writer.WriteLine(Points);
+            writer.WriteLine(Level);
+            writer.WriteLine(string.Join(",", Titles));
+            writer.WriteLine(string.Join(",", PersonalGoals));
+        }
+        SaveTitles();
+    }
+
+    public void LoadPlayerData()
+    {
+        string path = "game_save.txt";
+        if (File.Exists(path))
+        {
+            try
+            {
+                string[] lines = File.ReadAllLines(path);
+                if (lines.Length >= 5)
+                {
+                    PlayerName = lines[0];
+                    Points = int.Parse(lines[1]);
+                    Level = int.Parse(lines[2]);
+                    Titles = new List<string>(lines[3].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+                    PersonalGoals = new List<string>(lines[4].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading player data: {ex.Message}");
+            }
+        }
+    }
+    
 
     public void DisplayStatus()
     {
