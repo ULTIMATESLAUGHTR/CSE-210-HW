@@ -4,7 +4,7 @@ public abstract class Activity
 {
     protected string _activityName;
     protected string _description;
-    protected int _duration; // in minutes
+    protected int _duration;
     protected DateTime _date;
 
     public Activity(string activityName, string description)
@@ -23,13 +23,13 @@ public abstract class Activity
         _duration = duration;
     }
 
-    // Abstract methods to be implemented by derived classes
+    // Here's where I'm putting the Abstract methods to be implemented by derived classes later.
     public abstract double GetDistance();
     public abstract double GetSpeed();
     public abstract double GetPace();
 
     public virtual string GetSummary()
     {
-        return $"{_date.ToString("dd MMM yyyy")} {_activityName} ({_duration} min): Distance {GetDistance():F1} km, Speed: {GetSpeed():F1} kph, Pace: {GetPace():F2} min per km";
+        return $"{_date.ToString("dd MMM yyyy")} {_activityName} ({_duration} min): Distance {GetDistance():F1} km, Speed: {GetSpeed():F1} k/ph, Pace: {GetPace():F2} min per km";
     }
 }

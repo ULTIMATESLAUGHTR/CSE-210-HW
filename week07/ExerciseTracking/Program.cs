@@ -11,28 +11,28 @@ class Program
         Console.WriteLine("Today's Date: " + DateTime.Now.ToShortDateString());
         Console.WriteLine();
 
-        // Create a list to hold all activities
+        
         List<Activity> activities = new List<Activity>();
 
-        // Create a Running activity
+        // Here's the mock running activity.
         RunningActivity running = new RunningActivity("Morning jog in the park");
         running.SetDuration(30);
         running.SetDistance(4.8);
         activities.Add(running);
 
-        // Create a Cycling activity
+        // Here's the mock cycling activity.
         CyclingActivity cycling = new CyclingActivity("Evening bike ride");
         cycling.SetDuration(45);
         cycling.SetSpeed(20.0);
         activities.Add(cycling);
 
-        // Create a Swimming activity
+        // This one's a lap Swimming activity
         SwimmingActivity swimming = new SwimmingActivity("Lap swimming at the pool");
         swimming.SetDuration(25);
         swimming.SetLaps(40);
         activities.Add(swimming);
 
-        // Iterate through the list and display summaries
+        // This will print the summary for each activity.
         foreach (Activity activity in activities)
         {
             Console.WriteLine(activity.GetSummary());
